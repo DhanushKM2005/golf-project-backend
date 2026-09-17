@@ -133,11 +133,11 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
 }
 
-CORS_ALLOWED_ORIGINS = config(
-    'CORS_ALLOWED_ORIGINS',
-    default="https://golf-project-frontend.vercel.app",
-    cast=Csv(),
-)
+CORS_ALLOWED_ORIGINS = [
+    "https://golf-project-frontend.vercel.app",
+    "https://golf-project-frontend-git-main-dhanushkm082005-3577.vercel.app",
+]
+
 CORS_ALLOW_CREDENTIALS = True
 
 # --- Payments (Stripe) -----------------------------------------------
