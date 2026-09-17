@@ -12,26 +12,27 @@ User = get_user_model()
 
 
 class RegisterView(generics.CreateAPIView):
-    """
-    Public registration endpoint.
-    Per PRD §08.1, users can choose an initial charity, contribution percentage,
-    and subscription plan (monthly/yearly) directly upon signup.
-    """
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
     permission_classes = [permissions.AllowAny]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+
+        if not serializer.is_valid():
+            return Response(
+                {"errors": serializer.errors},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
         user = serializer.save()
         refresh = RefreshToken.for_user(user)
+
         return Response({
             'user': UserSerializer(user).data,
             'access': str(refresh.access_token),
             'refresh': str(refresh),
         }, status=status.HTTP_201_CREATED)
-
 
 class EmailOrUsernameTokenSerializer(TokenObtainPairSerializer):
     @classmethod
