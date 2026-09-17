@@ -136,6 +136,8 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     "https://golf-project-frontend.vercel.app",
     "https://golf-project-frontend-git-main-dhanushkm082005-3577.vercel.app",
+    "https://golf-project-frontend-a6n4p5ib3-dhanushkm082005-3577.vercel.app",
+    
 ]
 
 CORS_ALLOW_CREDENTIALS = True
