@@ -12,7 +12,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY', default='dev-only-insecure-key-change-me')
 DEBUG = config('DEBUG', default=True, cast=bool)
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1', cast=Csv())
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -153,3 +152,8 @@ YEARLY_FEE = 9999
 MIN_CHARITY_PERCENT = 10
 PRIZE_POOL_PERCENT_OF_FEE = 15  # % of each active fee that funds the total prize pool
 POOL_SHARE = {5: 0.40, 4: 0.35, 3: 0.25}
+ALLOWED_HOSTS = [
+    "golf-project-backend-3.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
